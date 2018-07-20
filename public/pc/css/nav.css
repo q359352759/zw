@@ -1,0 +1,120 @@
+html,body{
+	font-family: "微软雅黑","microsoft yahei";
+	position: relative;
+	/*-webkit-transform-origin: left top; 
+	transform-origin: left top;*/
+	height: 100%;
+}
+
+
+.max_box{
+	overflow: hidden;
+}
+.max_box>div{
+	min-width: 1240px;
+	overflow: hidden;
+}
+
+@font-face {
+	font-family:"POPPINS-LIGHT";
+	src: url(../../font/POPPINS-LIGHT.TTF);
+}
+/*logo字体*/
+@font-face {
+	font-family:'Black_in_fashion';
+	src: url('../../font/时尚中黑简体.TTF');
+}
+a{
+	outline: none;
+}
+a:link{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+.cb{
+	clear: both;
+}
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+
+
+.header{
+	height: 100px;
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+}
+.header .header_logo{
+	position: absolute;
+	left: 100px;
+	top: 26px;
+	height: 54px;
+	font-size: 28px;
+	color: #FFFFFF;
+	font-weight: 100;
+	/*font-family: 'POPPINS-LIGHT' ;*/
+	font-family: 'Black_in_fashion';
+	line-height: 37px;
+	letter-spacing: 1px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.header .header_logo>img{
+	float: left;
+	height: 28px;
+	margin: 4px 10px 0px 0px;
+}
+/*.header .header_logo>.logo_font{
+	float: left;
+}*/
+.header .header_nav{
+	text-align: right;
+	padding: 33px 109px;
+}
+.header .header_nav li{
+	display: inline-block;
+	font-size: 16px;
+	/*font-weight: bold;*/
+	height: 35px;
+	line-height: 35px;
+	width: 120px;
+	text-align: center;	
+	border-radius: 38px;
+	color: #FFFFFF;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.header .header_nav li:hover{
+	background: #FFFFFF;
+	color: #4196FF;
+}
+.header .header_nav li.active{
+	background: #FFFFFF;
+	color: #4196FF;
+}
+
+@media (max-width: 1400px) {
+	.header .header_logo{
+		left: 20px;
+	}
+	.header .header_nav {
+	    padding: 33px 20px 33px;
+	}
+}
+

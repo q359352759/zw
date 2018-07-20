@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge,IE=11,IE=10,IE=9,IE=8"/>
+		<meta http-equiv="expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>{$basic.WebsiteTitle.val}-{$basic.Subtitle.val}</title>
+		<meta name="description" content="{$basic.description.val}" />
+		<meta name="keywords" content="{$basic.keywords.val}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/fontclass/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.css"/>
+		<!--顶部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/nav.css?a=2"/>
+		<!--底部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/footer.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/pc/css/product.css?a=7"/>
+	</head>
+	<body>
+	<div class="max_box">
+		<div>	
+	
+		<!--导航-->
+		{include file="index::nav" /}
+		
+		
+		<div class="banner">
+			<div id="myCarousel" class="carousel slide">
+			    <!-- 轮播（Carousel）项目 -->
+			    <div class="carousel-inner">
+			    	{foreach name="banner" item="bannerObj" key="i"}
+			        <div class="item {$i==0 ? 'active':''}">
+			            <img src="__UPLOAD__/{$bannerObj.imgUrl}" />
+			            <div class="banner_box">
+			            	<!--<div class="banner_Line"></div>-->
+			            	<div class="banner_title">{$bannerObj.title}</div>
+			            	<div class="banner_text">{$bannerObj.text}</div>
+			            	<a href="{:url('index/index/productlist')}" class="banner_btn">了解更多</a>
+			            </div>
+			        </div>
+			        {/foreach}
+			    </div>
+			</div>
+		</div>
+		<div id="classification"></div>
+		<!--box_1掩体-->
+		<div class="box_1_1"></div>
+		<div class="box_1">
+			<div>
+				<i class="icon iconfont icon-fenlei1"></i>
+				<a href="#classification">产品分类</a>
+				<a href="#characteristic">特色产品</a>
+				<a href="#Range">服务范围</a>
+				<a href="#Development">开发流程</a>
+				<a class="Consultation" href="{:url('index/index/AboutUs')}#contactus">立即咨询</a>
+			</div>
+		</div>
+		
+		<div class="box_2">
+			<div class="box2_header">产品分类展示</div>
+			<div class="line_1"></div>
+			<div class="">
+				<ul class="box_list">
+					{foreach name="productTypeList" item="productTypeObj" key="i"}
+					<li>
+						<a href="{:url('index/index/ProductList/'.$productTypeObj.Id.'/1')}">
+							<div class="img"><img src="__UPLOAD__/{$productTypeObj.picture}"/></div>
+							<div class="title">{$productTypeObj.name}</div>
+							<div class="text">{$productTypeObj.introduce}</div>
+						</a>
+					</li>
+					{/foreach}
+					<!--<li>
+						<a href="javascript:;">
+							<div class="img"><img src="__PUBLIC__/image/product/app.png"/></div>
+							<div class="title">APP开发</div>
+							<div class="text">音乐、电商、企业应用、租车等各类app设计</div>
+						</a>
+					</li>-->
+					<li class="cb"></li>
+				</ul>
+			</div>
+			<div class="line_2"></div>
+		</div>
+		
+		<div id="characteristic" ></div>
+		<div class="box_3"  >
+			<div class="title_1">特色产品展示</div>
+			<div class="line"></div>
+			<div class="box_list">
+				<ul class="">
+					{volist name="productList_3" id="productObj"}
+					<li>
+						<div>
+							<img src="__UPLOAD__/{$productObj.CoverMap}"/>
+							<div>
+								<div class="title_2">{$productObj.title}</div>
+								<a class="box3_btn" href="{:url('index/index/details?i='.$productObj.Id)}">了解更多</a>
+							</div>
+						</div>
+					</li>
+					{/volist}
+					<!--<li>
+						<div>
+							<img src="__PUBLIC__/image/OC51(]`W`UNOHQFX2RONMA8.png"/>
+							<div>
+								<div class="title_2">电子班牌</div>
+								<a class="box3_btn" href="{:url('index/index/ProductList')}">了解更多</a>
+							</div>
+						</div>
+					</li>-->
+					<li class="cb"></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="Range"></div>
+		<div class="box_4">
+			<div class="title">服务遍布世界各地</div>
+			<div class="text">众联云海创立至今客户遍布全国各省市，一次合作，便长期合作，提供高效稳定的软件技术支撑服务</div>
+			<div class="Map">
+				<img src="__PUBLIC__/image/map.png"/>
+				<ul>
+					<li style="top: 322px;left: 570px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>福建</span>
+					</li>
+					<li style="top: 272px;left: 390px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>四川</span>
+					</li>
+					<li style="top: 184px;left: 556px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>山东</span>
+					</li>
+					<li style="top: 272px;left: 450px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>重庆</span>
+					</li>
+					<li style="top: 230px;left: 580px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>江苏</span>
+					</li>
+					<li style="top: 280px;left: 588px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>浙江</span>
+					</li>
+					
+					<li style="top: 350px;left: 519px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>广东</span>
+					</li>
+					<li style="top: 304px;left: 493px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>湖南</span>
+					</li>
+					
+					
+					
+				</ul>
+			</div>
+		</div>
+		
+		<div id="Development"></div>
+		<div class="box_5">
+			<ul class="title">
+              	<li class="active"><a href="#box_5_1" data-toggle="tab">获得资料</a></li>
+              	<li class=""><a href="#box_5_2" data-toggle="tab">设计与开发</a></li>
+              	<li class=""><a href="#box_5_3" data-toggle="tab">后期维护</a></li>
+            </ul>
+            <div class="tab-content">
+				<div class="tab-pane active" id="box_5_1">
+					<img src="__PUBLIC__/image/组23.png"/>
+				</div>
+				<div class="tab-pane" id="box_5_2">
+					<img src="__PUBLIC__/image/组23拷贝.png"/>
+				</div>
+				<div class="tab-pane" id="box_5_3">
+					<img src="__PUBLIC__/image/组23拷贝1.png"/>
+				</div>
+            </div>
+		</div>
+		
+		
+		{include file="index::footer" /}
+	
+		</div>
+	</div>
+		
+		<style type="text/css">
+			a[href=#classification]{
+				color: red;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			var box_1T=$('#classification').offset().top-$(window).scrollTop()
+			if(box_1T<0){
+				$('.box_1').addClass('active');
+				$('.box_1_1').addClass('active');
+			}
+			$(window).scroll(function(){
+				var box_1T=$('#classification').offset().top-$(window).scrollTop()
+				if(box_1T<0){
+					$('.box_1').addClass('active');
+					$('.box_1_1').addClass('active');
+				}else{
+					$('.box_1').removeClass('active');
+					$('.box_1_1').removeClass('active');
+				}
+				if($('#classification').offset().top>$(window).scrollTop()-20 && $('#classification').offset().top<$(window).scrollTop()+20){
+					$('.box_1').find("a[href='#classification']").addClass('active');
+					$('.box_1').find("a[href='#classification']").siblings().removeClass('active')
+				}else if($('#characteristic').offset().top>$(window).scrollTop()-20 && $('#characteristic').offset().top<$(window).scrollTop()+20){
+					$('.box_1').find("a[href='#characteristic']").addClass('active');
+					$('.box_1').find("a[href='#characteristic']").siblings().removeClass('active')
+				}else if($('#Range').offset().top>$(window).scrollTop()-20 && $('#Range').offset().top<$(window).scrollTop()+20){
+					$('.box_1').find("a[href='#Range']").addClass('active');
+					$('.box_1').find("a[href='#Range']").siblings().removeClass('active')
+				}else if($('#Development').offset().top>$(window).scrollTop()-20 && $('#Development').offset().top<$(window).scrollTop()+20){
+					$('.box_1').find("a[href='#Development']").addClass('active');
+					$('.box_1').find("a[href='#Development']").siblings().removeClass('active')
+				}
+//				console.log($('#classification').offset().top)
+//				console.log($(window).scrollTop())
+				
+			})
+			
+			
+			$('.box_1').find('a').click(function(){
+				if(isContains($(this).attr('href'),'#')){
+					var className_1=$(this).attr('href');
+					var top=$(className_1).offset().top
+					console.log(top);
+					$("html, body").animate({    
+			            scrollTop: top + "px"    
+			        }, 300);
+			        $(this).addClass('active');
+			        $(this).siblings().removeClass('active')
+			        return false;
+				}
+			})
+			
+			function isContains(str, substr) {
+			    return str.indexOf(substr) >= 0;
+			}
+			
+			var liLen=$('.Map').find('li').length
+			var index=0;
+			var time=setInterval(function(){
+					if(index==liLen){
+						clearInterval(time)
+					}else{
+						$('.Map').find('li').eq(index).addClass('active');
+					}
+					index++
+				},300)
+			
+			
+		</script>
+	</body>
+</html>

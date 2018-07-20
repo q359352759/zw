@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <title>VUE官方递归树精简版</title>
+</head>
+<body>
+<!-- item template -->
+<template id="item-template">
+	<li>
+	    <div>
+	        <span>---{{model.name}}</span>
+	    </div>
+	    <ul>
+	    	<digui v-for="x in model.children" :model="x"></digui>
+	    </ul>
+	</li>
+</template>
+
+<!-- the demo root element -->
+<div id="demo">
+	<!--<li v-for="x in menuList"></li>-->
+	<ul>
+		<digui v-for="x in menuList" :model="x"></digui>
+	</ul>
+</div>
+<script type="text/javascript">
+		// demo data
+    var data = [{
+        name: 'MyTree',
+        children: [
+            { name: 'hello' },
+            { name: 'wat' },
+            {
+                name: 'child folder',
+                children: [
+                    {
+                        name: 'child folder',
+                        children: [
+                            { name: 'hello' },
+                            { name: 'wat' }
+                        ]
+                    },
+                    { name: 'hello' },
+                    { name: 'wat' },
+                    {
+                        name: 'child folder',
+                        children: [
+                            { name: 'hello' },
+                            { name: 'wat' }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },{
+        name: 'MyTree',
+        children: [
+            { name: 'hello' },
+            { name: 'wat' },
+            {
+                name: 'child folder',
+                children: [
+                    {
+                        name: 'child folder',
+                        children: [
+                            { name: 'hello' },
+                            { name: 'wat' }
+                        ]
+                    },
+                    { name: 'hello' },
+                    { name: 'wat' },
+                    {
+                        name: 'child folder',
+                        children: [
+                            { name: 'hello' },
+                            { name: 'wat' }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }]
+
+    // define the item component
+    Vue.component('digui', {
+        template: '#item-template',
+        props: {model: Object},
+//      data: function () {
+//          return {}
+//      },
+//      methods: {}
+    })
+
+    // boot up the demo
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            menuList: data
+        }
+    })
+</script>
+</body>
+</html>

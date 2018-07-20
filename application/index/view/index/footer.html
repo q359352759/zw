@@ -1,0 +1,170 @@
+		
+		<div class="footer_1">
+			<div class="footer1_1">
+				<div class="left_box">
+					<img src="__PUBLIC__/image/contact.png"/>
+					<div class="title_1">咨询热线</div>
+					<div class="Telephone">{$basic.Telephone.val}</div>
+					<ul>
+						<li>专业技术咨询</li>
+						<li>全方位产品解读</li>
+					</ul>
+				</div>
+				<ul class="right_box">
+
+					{foreach name="bottomMenu" item="bottomMenuObj" key="i" }
+						{if condition="$i lt 4"}
+							<li class="w22">
+								<div class="title_2">{$bottomMenuObj.DisplayName!='' ? $bottomMenuObj.DisplayName : $bottomMenuObj.Formerly}</div>
+								{foreach name="bottomMenuObj.children" item="Obj"}
+									{if condition="$Obj.type==0"}
+										<a href="{:url('index/index/'.$Obj.url)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{elseif condition="$Obj.type==1"}
+										<a href="{:url('index/index/page?i='.$Obj.pageId)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{else /}
+										<a href="{$Obj.url}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{/if}
+								{/foreach}
+							</li>
+							{elseif condition="$i==4"}
+							<li class="w12">
+								<div class="title_2">{$bottomMenuObj.DisplayName!='' ? $bottomMenuObj.DisplayName : $bottomMenuObj.Formerly}</div>
+								{foreach name="bottomMenuObj.children" item="Obj"}
+									{if condition="$Obj.type==0"}
+										<a href="{:url('index/index/'.$Obj.url)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{elseif condition="$Obj.type==1"}
+										<a href="{:url('index/index/page?i='.$Obj.pageId)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{else /}
+										<a href="{$Obj.url}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{/if}
+								{/foreach}
+							</li>
+						{/if}
+					{/foreach}
+					
+					<!--<li class="w22">
+						<div class="title_2">解决方案</div>
+						<a href="javascript:;">教育行业</a>
+						<a href="javascript:;">医疗行业</a>
+						<a href="javascript:;">金融行业</a>
+						<a href="javascript:;">互联网行业</a>
+					</li>
+					<li class="w12">
+						<div class="title_2">关注我们</div>
+						<a href="javascript:;">关于我们</a>
+					</li>-->
+					<li class="cb"></li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="footer1_2">
+				<div class="title">
+					<a href="javascript:;">关于我们</a>
+					<a href="javascript:;">法律声明</a>
+					<a href="javaScript:;">廉正举报</a>
+					<a href="javascript:;">友情链接</a>
+					<div class="cb"></div>
+				</div>
+				<div class="friendship">
+					{foreach name="FriendshipLink" item="LinkObj"}
+					<a target="_blank" href="{$LinkObj.url}">{$LinkObj.name}</a>
+					{/foreach}
+					<!--<a href="javascript:;">阿里云</a>-->
+					<div class="cb"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer_2">
+			<div>{$basic.ICP.val}
+				<script src="https://s19.cnzz.com/z_stat.php?id=1263554088&web_id=1263554088" language="JavaScript"></script>
+				<!--<a href="javascript:;">站长统计</a>-->
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ww=$(window).width();
+			if(ww<=750){
+				window.location.href='{:url("index/m/index")}'
+			}
+			
+			function Initialization(){
+				if(ww>750 && ww<1300){
+//					$('html,body').css({'width':ww+'px'})
+					var r=ww/1240
+					$('.max_box').children().css({'zoom':r})					
+				}else if(ww<750){
+//					alert('跳转至手机端')
+				}
+			}
+			Initialization()
+			$(window).resize(function(){
+				var ww=$(window).width();
+//				var metaViewport=$('head').children('meta[name="viewport"]');
+				if(ww<1200 && ww>750){
+					var r=ww/1240
+					$('.max_box').children().css({'zoom':r})
+				}else if(ww>1240){
+					$('.max_box').children().removeAttr('style')
+				}else if(ww<750){
+//					alert('跳转至手机')
+					window.location.href='{:url("index/m/index")}'
+				}
+			})
+			
+			if(!supportCss3('zoom')){
+				$('.max_box').css({'overflow':'initial'})
+			}
+			
+			//判断浏览器是否支持	zoom	
+			function supportCss3(style) {  
+			    var prefix = ['webkit', 'Moz', 'ms', 'o'],  
+			    i,  
+			    humpString = [],  
+			    htmlStyle = document.documentElement.style,  
+			    _toHumb = function (string) {  
+				    return string.replace(/-(\w)/g, function ($0, $1) {
+				    	return $1.toUpperCase();  
+				    });  
+			    };
+			    
+			    for (i in prefix)
+			    humpString.push(_toHumb(prefix[i] + '-' + style));  
+			       
+			    humpString.push(_toHumb(style));  
+			       
+			    for (i in humpString)  
+			    if (humpString[i] in htmlStyle) return true;  
+			       
+			    return false;  
+			}
+			
+			//访问记录
+			$.ajax({
+				type:"post",
+				url:"{:url('index/post/access')}",
+				async:true,
+				data:{'Browser':window.location.href},
+				success:function(x){
+					console.log('添加访问记录',x)
+				}
+			});
+			
+			//百度自动推送
+			(function(){
+			    var bp = document.createElement('script');
+			    var curProtocol = window.location.protocol.split(':')[0];
+			    if (curProtocol === 'https') {
+			        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+			    }
+			    else {
+			        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+			    }
+			    var s = document.getElementsByTagName("script")[0];
+			    s.parentNode.insertBefore(bp, s);
+			})();
+			
+		</script>
+		

@@ -1,0 +1,247 @@
+.header{
+ 	/*background: -webkit-linear-gradient(left, #9242FF , #4FD7FD);
+    background: -o-linear-gradient(right, #9242FF, #4FD7FD);
+    background: -moz-linear-gradient(right, #9242FF, #4FD7FD);
+    background: linear-gradient(to right, #9242FF , #4FD7FD);*/
+   	background: #5FA4FF;
+	position: relative !important;
+}
+
+/*横幅*/
+.banner{
+	height: 490px;
+}
+#myCarousel{
+	height: 100%;
+}
+#myCarousel>div{
+	height: 100%;
+}
+#myCarousel .item{
+	height: 100%;
+}
+#myCarousel .item>img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.banner_box{
+	width: 1200px;
+	margin: 0px auto;
+	padding:250px 0px 1px;
+	position: relative;
+	z-index: 1;
+	color: #FFFFFF;
+}
+.banner_Line{
+	width: 150px;
+	height: 5px;
+	background: #FFFFFF;
+	margin:0px 0px 60px 0px;
+}
+.banner_title{
+	font-size: 48px;
+	font-weight: bold;
+	line-height: 75px;
+	margin: 0px 0px 30px 0px;
+}
+.banner_text{
+	font-size: 16px;
+	line-height: 32px;
+	margin: 0px 0px 100px 0px;
+	font-family: arial;
+}
+.banner_btn{
+	display: block;
+	width: 255px;
+	height:  70px;
+	line-height: 70px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: bold;
+	background: #4298FF;
+	-webkit-border-radius: 70px;
+	-moz-border-radius: 70px;
+	border-radius: 70px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	outline: none;
+}
+.banner_btn:hover{
+	color: #4298FF;
+	background: #FFFFFF;
+}
+
+.box_1{
+	padding: 1px 0px;
+	text-align: center;
+}
+.box_1 .title{
+	font-size: 30px;
+	line-height: 30px;
+	margin: 83px auto 38px;
+}
+.box_1 .line{
+	width: 114px;
+	height: 4px;
+	margin: 0px auto;
+	background: #000000;
+}
+.box_1 .text{
+	width: 833px;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 60px auto 11px;
+}
+.box_1 .bg{
+	height: 218px;
+	background-image:url(../../image/AboutUs.png) ;
+}
+
+.box_2{
+	padding: 1px 0px;
+	background: #5FA4FF;
+	text-align: center;
+	color: #FFFFFF;
+}
+.box_2 .title_1{
+	font-size: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	margin: 83px auto 37px;
+}
+.box_2 .text_1{
+	font-size: 14px;
+}
+.box_2 .box_list{
+	width: 1200px;
+	margin: 111px auto 50px;
+}
+.box_2 .box_list li:not(.cb){
+	width: 33.3%;
+	float: left;
+	margin: 0px auto 56px;
+}
+.box_2 .box_list .img{
+	height: 56px;
+	width: 56px;
+	margin: 0px auto 23px;
+	position: relative;
+}
+.box_2 .box_list .img>img{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	max-height: 100%;
+	max-width: 100%;
+}
+.box_2 .box_list .title_2{
+	font-size: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.box_2 .box_list .text_2{
+	font-size: 12px;
+	line-height: 24px;
+	height: 45px;
+	overflow: hidden;
+}
+
+.box_3{
+	padding: 1px 0px 90px;
+	text-align: center;
+}
+.box_3 .title{
+	margin: 93px auto 61px;
+	font-size: 30px;
+	line-height: 30px;
+	color: #4298FF;
+}
+.box_3 .input_box{
+	width: 820px;
+	margin: 0px auto 92px;
+	display: block;
+}
+.box_3 .input_box input{
+	width: 397px;
+	height: 35px;
+	border: 1px solid #C4C4C5;
+	outline: none;
+	padding: 0px 10px;
+}
+.box_3 .input_box input:focus{
+	border: 1px solid #5FA4FF;
+}
+.box_3 .input_box .messageName{
+	float: left;
+}
+.box_3 .input_box .messageTelephone{
+	float: right;
+}
+.box_3 .input_box .messageText{
+	clear: both;
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	min-height: 84px;
+	margin: 23px 0px 22px;
+	border: 1px solid #C4C4C5;
+	outline: none;
+	padding: 10px;
+	overflow:hidden;
+}
+.box_3 .input_box .messageText:focus{
+	border: 1px solid #5FA4FF;
+}
+.box_3 .input_box .box3_btn{
+	width: 100%;
+	height: 37px;
+	background: #5FA4FF;
+	color: #FEFEFE;
+	font-size: 12px;
+	border: none;
+	outline: none;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.box_3 .input_box .box3_btn:hover{
+	background: #1c6cd6;
+}
+.box_3 .box_list>li{
+	display: inline-block;
+	min-width: 185px;
+	padding: 19px 23px 17px;
+	font-size: 12px;
+	color: #000011;
+}
+.box_3 .box_list>li:not(:first-child){
+	border-left: 1px solid #EBEBEB;
+}
+.box_3 .box_list>li>div{
+	margin: 0px 0px 25px 0px;
+}
+.box_3 .box_list>li i{
+	font-size: 32px;
+	color: #5592CE;
+}
+
+
+
+
+
+
+

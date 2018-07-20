@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge,IE=11,IE=10,IE=9,IE=8"/>
+		<meta http-equiv="expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>{$basic.WebsiteTitle.val}</title>
+		<meta name="description" content="{$basic.description.val}" />
+		<meta name="keywords" content="{$basic.keywords.val}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/fontclass/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/plugins/swiper/css/swiper.css"/>
+		<!--顶部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/nav.css?a=3"/>
+		<!--底部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/footer.css?a=1"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/news.css?a=3"/>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				var r = $(window).width() / 750;
+				$(document).ready(function(){ 
+					$('head').children('meta[name="viewport"]').attr('content','width=device-width,initial-scale='+r+',maximum-scale='+r+', user-scalable=no')
+				})
+		</script>
+	</head>
+	<body>
+		<!--导航-->
+		{include file="m::nav" /}
+		
+		<div class="swiper-container1 banner">
+		    <div class="swiper-wrapper">
+		    	{foreach name="news_3.list" item="news_3Obj" key="i"}
+		      	<div class="swiper-slide">
+			        <img src="__UPLOAD__/{$news_3Obj.CoverMap}" />
+			        <div class="banner_box">
+			           	<div class="banner_title">{$news_3Obj.title}</div>
+			            <div class="banner_text">{$news_3Obj.introduce}</div>
+			            <a href="{:url('index/m/new?i='.$news_3Obj.Id)}" class="banner_btn">了解更多</a>
+			        </div>
+		      	</div>
+		       {/foreach}
+		    </div>
+		    <!-- Add Pagination -->
+		    <div class="swiper-pagination"></div>
+		</div>
+		
+		
+		
+		<div class="box_1">
+			<div>
+				<i class="icon iconfont icon-fenlei1"></i>
+				<a class="{$typeId==0 ? 'active' :''}" href="{:url('index/m/news')}">全部</a>
+				{volist name="newTypeList" id="newTypeObj"}
+				<a class="{$typeId==$newTypeObj.Id ? 'active' :''}" href="{:url('index/m/news?i='.$newTypeObj.Id)}">{$newTypeObj.name}</a>
+				{/volist}
+				<!--<a href="#">公司新闻</a>-->
+				<!--<a class="Consultation" href="#">立即咨询</a>-->
+			</div>
+		</div>
+		
+		<div class="box_2">
+			{if condition="count($newsList.list)!=0"}
+			<div class="box2_header">
+				{if condition="$typeId==0"}
+					新闻中心
+					{else}
+					{volist name="newTypeList" id="newTypeObj"}
+					{if condition="$typeId==$newTypeObj.Id"}
+						{$newTypeObj.name}
+					{/if}
+					{/volist}
+				{/if}
+			</div>
+			<div class="line_1"></div>
+			<div class="box_list">
+				<ul class="">
+					{volist name="newsList.list" id="newObj"}
+					<li>
+						<a href="{:url('index/m/new?i='.$newObj.Id)}">
+							<div class="img"><img src="__UPLOAD__/{$newObj.CoverMap}"/></div>
+							<div class="title">{$newObj.title}</div>
+							<div class="text">{$newObj.introduce}</div>
+						</a>
+					</li>
+					{/volist}
+					<!--<li>
+						<a href="{:url('index/m/new')}">
+							<div class="img"><img src="__PUBLIC__/image/OC51(]`W`UNOHQFX2RONMA8.png"/></div>
+							<div class="title">广州英孚小学电子班牌设计展示</div>
+							<div class="text">电子班牌用于学生上下学打开，方便教师了解学生上课情况 以及展示其他班级内学生获奖或其优异电子班牌用于学生上下学打开，方便教师了解学生上课情况 以及展示其他班级内学生获奖或其优异情况...</div>
+						</a>
+					</li>-->
+				</ul>
+			</div>
+			{else}
+			<div class="NoData">
+				<img src="__PUBLIC__/image/nocontent.png" alt="" />
+			</div>
+			{/if}
+			{if condition="$newsList.page.lower!=''"}
+			<a href="javascript:;" class="box2_btn">加载更多</a>
+			{/if}
+		</div>
+		
+		{include file="m::footer" /}
+		<script src="__PUBLIC__/plugins/swiper/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var swiper = new Swiper('.swiper-container1', {
+			      	spaceBetween: 1,
+			      	loop : true,
+			      	pagination: {
+			       		el: '.swiper-pagination',
+			        	clickable: true,
+			      	},
+			      	on:{
+					    touchStart: function(event){
+					    	$('.banner').addClass('active')
+					    	console.log('开始拖动')
+					    },
+					    slideChangeTransitionEnd:function(){
+					    	$('.banner').removeClass('active')
+					    }
+					},
+			    });
+
+			
+			
+			function addHeight(){
+				$('.box_list').children('ul').css({'max-height':$('.box_list').children('ul').height()})
+			}
+			addHeight();
+			
+			var pageIndex=1;
+			$('.box2_btn').click(function(){
+				if($(this).html()!='加载更多'){
+					return;
+				}
+				$(this).html('获取中···');
+				pageIndex++;
+				var obj=new Object();
+					obj.typeId='{$typeId}';
+					obj.pageSize=3;
+					obj.pageIndex=pageIndex;
+					obj.type=0;		//1表示如果产品
+				$.ajax({
+					type:"post",
+					url:"{:url('index/post/getTypePage')}",
+					async:true,
+					data:obj,
+					success:function(x){
+						var x=JSON.parse(x);
+						tp(x)
+					}
+				});
+			})
+			
+			function tp(x){
+				if(x.page.lower==''){
+					$('.box2_btn').hide()
+				}
+				var html='';
+				for(var i=0;i<x.list.length;i++){
+					html+='<li>'+
+							"<a href=\"{:url('index/m/new')}/i/"+x.list[i].Id+"\">"+
+								'<div class="img"><img src="__UPLOAD__/'+x.list[i].CoverMap+'"/></div>'+
+								'<div class="title">'+x.list[i].title+'</div>'+
+								'<div class="text">'+x.list[i].introduce+'</div>'+
+							'</a>'+
+						'</li>'
+				}
+				$('.box_list').children('ul').append(html);
+				$('.box_list').children('ul').css({'max-height':$('.box_list').children('ul').height()+1600+'px'})
+				setTimeout(function(){
+					$('.box2_btn').html('加载更多');
+				},1000)
+			}
+			
+		</script>
+	</body>
+</html>

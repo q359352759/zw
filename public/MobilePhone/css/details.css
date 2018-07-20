@@ -1,0 +1,160 @@
+.header{
+	background: #5FA4FF;
+	position: relative !important;
+}
+
+.box_1{
+	background:#F2F2F2;
+	height: 75px;
+	padding: 1px 30px;
+}
+.box_1 .Consultation{
+	float: right;
+	background: #6DDE36;
+	height: 38px;
+	line-height: 38px;
+	font-size: 22px;
+	color: #FFFFFF;
+	padding: 0px 15px;
+	border-radius: 38px;
+	margin: 19px 0px 0px;
+}
+.box_1 .btn-group{
+	height: 100%;
+}
+.box_1 .btn-group button{
+	height: 100%;
+	border: none;
+	background: none;
+	font-size: 26px;
+	outline: none;
+}
+.box_1 .btn-group button:focus{
+	background-color: #F2F2F2 !important;
+	border-color: #F2F2F2 !important;
+}
+.box_1 .btn-group button>font{
+	margin-right: 20px;
+	float: left;
+}
+.box_1 .btn-group button>span{
+	background: #C5CDFF;
+    width: 25px;
+    height: 25px;
+    color: #FFFFFF;
+    border-radius: 100%;
+    display: inline-block;
+    float: left;
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 24px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin-right: 10px;
+}
+.box_1 .btn-group.open button>span{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.btn-group.open .dropdown-toggle{
+	box-shadow:none;
+}
+.box_1 .btn-group .dropdown-menu{
+	background: #5FA4FF;
+	padding: 0px;
+	margin: 0px;
+	font-size: 24px;
+	width: 160px;
+}
+.box_1 .btn-group .dropdown-menu>li>a{
+	color: #FFFFFF;
+	padding: 20px 13px;
+}
+
+
+
+.box_2{
+	margin: 0px auto;
+	padding: 10px 30px;
+}
+.box_2 .title{
+	font-size: 34px;
+	font-weight: bold;
+	line-height: 60px;
+	color: #000011;
+	text-align: center;
+	margin: 70px 0px 38px;
+}
+.box_2 .time{
+	font-size: 0px;
+	text-align: center;
+}
+.box_2 .time>li{
+	display: inline-block;
+	font-size: 24px;
+	color: #000011;
+	margin: 0px 10px;
+	line-height: 12px;
+}
+.box_2 .line_1{
+	margin: 42px auto 40px;
+	height: 1px ;
+	background: #0D1330;
+}
+.box_2 .cont{
+	padding: 0px 0px 96px 0px;
+	font-size: 24px;
+}
+.box_2 .cont img{
+	max-width: 100%;
+}
+
+.box_2 .paging{
+	font-size: 0px;
+	text-align: center;
+	margin: 0px 0px 53px 0px;
+}
+.box_2 .paging li{
+	display: inline-block;
+	margin: 0px 5px;
+	min-height: 30px;
+	min-width: 30px;
+	font-size: 20px;
+	line-height: 28px;
+	padding: 0px 5px;
+	border: 1px solid #EBEBEB;
+	color: #999999;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.box_2 .paging li:not(.disable):hover{
+	color: #FFFFFF;
+	background: #4298FF;
+	border: 1px solid #4298FF;
+}
+.box_2 .paging .PREVIOUS{
+	border-radius: 30px 0px 0px 30px;
+	padding: 0px 10px;
+}
+.box_2 .paging .NEXT{
+	border-radius:0px 30px 30px 0px;
+	padding: 0px 10px;
+}
+.box_2 .paging li.disable{
+	color: #B2B2B2;
+	cursor: not-allowed;
+}
+.box_2 .paging li.active{
+	color: #FFFFFF;
+	background: #4298FF;
+	border: 1px solid #4298FF;
+}

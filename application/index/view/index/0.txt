@@ -1,0 +1,240 @@
+		page页面删减部分
+		<div class="box_2">
+			<div class="share">
+				<div>分享到：</div>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+				</div>
+				
+				<div class="cb"></div>
+			</div>
+			<div class="box2_header">
+				<i class="icon iconfont icon-ren-copy-copy"></i>发表我的评论
+			</div>
+			<form  class="form_1">
+				<div class="input_box">
+					<div>
+						<span>*</span>评论内容
+					</div>
+					<div>
+						<textarea required="" class="comment_text"  name="" rows="" cols="" placeholder="写点什么吧"></textarea>
+						<button type="button" class="box2_btn">
+							<i class="icon iconfont icon-gouweixuanzhong"></i>提交评论
+						</button>
+						<button class="sub_1 hidden" type="submit"></button>
+					</div>
+				</div>
+			</form>
+			<ul class="box_list">
+				<li class="list_title">网友最新评论</li>
+				{volist name="PageComment.list" id="PageCommentObj"}
+				<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">{$PageCommentObj.text}</div>
+						<div class="time">发布于：{:date('Y-m-d',strtotime($PageCommentObj.time))}</div>
+					</div>
+				</li>
+				{/volist}
+			</ul>
+			<ul class="paging">
+			{if condition="count($PageComment.pageIng.page) gt 1"}
+				{if condition="$PageComment.pageIng.upper==''"}
+					<a href="javascript:;"><li class="PREVIOUS disable">←&nbsp;PREVIOUS</li></a>
+					{else}
+					<a href="{:url('index/index/new')}/{$pageId}/{$PageComment.pageIng.upper}"><li class="PREVIOUS">←&nbsp;PREVIOUS</li></a>
+				{/if}
+				{foreach name="PageComment.pageIng.page" item="pageObj"}
+				<a href="{:url('index/index/new')}/{$pageId}/{$pageObj}"><li class="{$pageObj==$pageIndex ? 'active' : ''}">{$pageObj}</li></a>
+				{/foreach}
+				{if condition="$PageComment.pageIng.lower==''"}
+					<a href="javascript:;"><li class="NEXT disable">NEXT&nbsp;→</li></a>
+					{else}
+					<a href="{:url('index/index/new')}/{$pageId}/{$PageComment.pageIng.lower}"><li class="NEXT">NEXT&nbsp;→</li></a>
+				{/if}
+			{/if}
+			</ul>
+		</div>
+		
+		new页面删减部分
+		
+		<div class="box_2">
+			<div class="share">
+				<div>分享到：</div>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+				</div>
+				
+				<div class="cb"></div>
+			</div>
+			<div class="box2_header">
+				<i class="icon iconfont icon-ren-copy-copy"></i>发表我的评论
+			</div>
+			<form  class="form_1">
+				<div class="input_box">
+					<div>
+						<span>*</span>评论内容
+					</div>
+					<div>
+						<textarea required="" class="comment_text"  name="" rows="" cols="" placeholder="写点什么吧"></textarea>
+						<button type="button" class="box2_btn">
+							<i class="icon iconfont icon-gouweixuanzhong"></i>提交评论
+						</button>
+						<button class="sub_1 hidden" type="submit"></button>
+					</div>
+				</div>
+			</form>
+			<ul class="box_list">
+				<li class="list_title">网友最新评论</li>
+				{volist name="PageComment.list" id="PageCommentObj"}
+				<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">{$PageCommentObj.text}</div>
+						<div class="time">发布于：{:date('Y-m-d',strtotime($PageCommentObj.time))}</div>
+					</div>
+				</li>
+				{/volist}
+			</ul>
+			{if condition="count($PageComment.pageIng.page) gt 1"}
+			<ul class="paging">
+				{if condition="$PageComment.pageIng.upper==''"}
+					<a href="javascript:;"><li class="PREVIOUS disable">←&nbsp;PREVIOUS</li></a>
+					{else}
+					<a href="{:url('index/index/new')}/{$pageId}/{$PageComment.pageIng.upper}"><li class="PREVIOUS">←&nbsp;PREVIOUS</li></a>
+				{/if}
+				{foreach name="PageComment.pageIng.page" item="pageObj"}
+				<a href="{:url('index/index/new')}/{$pageId}/{$pageObj}"><li class="{$pageObj==$pageIndex ? 'active' : ''}">{$pageObj}</li></a>
+				{/foreach}
+				{if condition="$PageComment.pageIng.lower==''"}
+					<a href="javascript:;"><li class="NEXT disable">NEXT&nbsp;→</li></a>
+					{else}
+					<a href="{:url('index/index/new')}/{$pageId}/{$PageComment.pageIng.lower}"><li class="NEXT">NEXT&nbsp;→</li></a>
+				{/if}
+			</ul>
+			{/if}
+		</div>
+		
+		
+		手机new.html页面
+		<div class="box_2">
+			<div class="share">
+				<div>分享到：</div>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+				</div>
+				
+				<div class="cb"></div>
+			</div>
+			<div class="box2_header">
+				<i class="icon iconfont icon-ren-copy-copy"></i>发表我的评论
+			</div>
+			<form class="form_1">
+			<div class="input_box">
+				<!--<div>
+					<span>*</span>评论内容
+				</div>-->
+				<!--<div>-->
+					<textarea required="" class="comment_text" name="" rows="" cols="" placeholder="写点什么吧"></textarea>
+					<button type="button" class="box2_btn">
+						<i class="icon iconfont icon-gouweixuanzhong"></i>提交评论
+					</button>
+					<button class="sub_1 hidden" type="submit"></button>
+				<!--</div>-->
+			</div>
+			</form>
+			<ul class="box_list">
+				<li class="list_title">网友最新评论</li>
+				{volist name="PageComment.list" id="PageCommentObj"}
+				<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">{$PageCommentObj.text}</div>
+						<div class="time">发布于：{:date('Y-m-d',strtotime($PageCommentObj.time))}</div>
+					</div>
+				</li>
+				{/volist}
+				<!--<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">具体评论内容</div>
+						<div class="time">发布于：2018-01-08</div>
+					</div>
+				</li>-->
+			</ul>
+			{if condition="$PageComment.pageIng.lower!=''"}
+			<a href="javascript:;" class="box2_btn1">加载更多</a>
+			{/if}
+		</div>
+		
+		手机page页面删除
+		<div class="box_2">
+			<div class="share">
+				<div>分享到：</div>
+				<div class="bdsharebuttonbox">
+					<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+					<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+					<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+					<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					<a href="#" class="bds_more" data-cmd="more"></a>
+				</div>
+				
+				<div class="cb"></div>
+			</div>
+			<div class="box2_header">
+				<i class="icon iconfont icon-ren-copy-copy"></i>发表我的评论
+			</div>
+			<form class="form_1">
+			<div class="input_box">
+				<!--<div>
+					<span>*</span>评论内容
+				</div>-->
+				<!--<div>-->
+					<textarea required="" class="comment_text" name="" rows="" cols="" placeholder="写点什么吧"></textarea>
+					<button type="button" class="box2_btn">
+						<i class="icon iconfont icon-gouweixuanzhong"></i>提交评论
+					</button>
+					<button class="sub_1 hidden" type="submit"></button>
+				<!--</div>-->
+			</div>
+			</form>
+			<ul class="box_list">
+				<li class="list_title">网友最新评论</li>
+				{volist name="PageComment.list" id="PageCommentObj"}
+				<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">{$PageCommentObj.text}</div>
+						<div class="time">发布于：{:date('Y-m-d',strtotime($PageCommentObj.time))}</div>
+					</div>
+				</li>
+				{/volist}
+				<!--<li>
+					<i class="icon iconfont icon-ren-copy-copy"></i>
+					<div>
+						<div class="text">具体评论内容</div>
+						<div class="time">发布于：2018-01-08</div>
+					</div>
+				</li>-->
+			</ul>
+			{if condition="$PageComment.pageIng.lower!=''"}
+			<a href="javascript:;" class="box2_btn1">加载更多</a>
+			{/if}
+		</div>
+				

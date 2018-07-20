@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge,IE=11,IE=10,IE=9,IE=8" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>{$basic.WebsiteTitle.val}</title>
+		<meta name="description" content="{$basic.description.val}" />
+		<meta name="keywords" content="{$basic.keywords.val}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/fontclass/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.css" />
+		<!--顶部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/nav.css?a=3"/>
+		<!--底部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/footer.css?a=1"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/new.css?a=2"/>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				var r = $(window).width() / 750;
+				$(document).ready(function(){ 
+					$('head').children('meta[name="viewport"]').attr('content','width=device-width,initial-scale='+r+',maximum-scale='+r+', user-scalable=no')
+				})
+		</script>
+	</head>
+
+	<body>
+		<!--导航-->
+		{include file="m::nav" /}
+
+		<!--<div class="banner">
+			<img src="__PUBLIC__/image/box_4.png" />
+			<div class="banner_box">
+				<div>
+					<div class="title">新闻中心</div>
+					<div class="text">不是一个人在奋斗</div>
+				</div>
+			</div>
+		</div>-->
+		
+		<div class="box_1_1">
+			<div>
+				<i class="icon iconfont icon-fenlei1"></i>
+				<a class="" href="{:url('index/m/news')}">全部</a>
+				{volist name="newTypeList" id="newTypeObj"}
+				<a class="" href="{:url('index/m/news?i='.$newTypeObj.Id)}">{$newTypeObj.name}</a>
+				{/volist}
+				<!--<a href="#">公司新闻</a>-->
+				<!--<a class="Consultation" href="#">立即咨询</a>-->
+			</div>
+		</div>
+		
+		<div class="box_1">
+			<div class="title">{$pageDetails.title}</div>
+			<ul class="time">
+				<li>时间：{:date('Y-m-d',strtotime($pageDetails.CreationTime))}</li>
+				<li>浏览人数：{$pageDetails.Clicks}</li>
+			</ul>
+			<div class="line_1"></div>
+			<div class="cont">{$pageDetails.text}</div>
+		</div>
+
+		
+
+		{include file="m::footer" /}
+		
+		<script type="text/javascript">
+			$('.cont').find('*').each(function(){
+				var sty=$(this)[0].style['font-size'];
+				if(sty){
+					$(this).css({'font-size':parseInt(sty)*2+'px'})
+				}
+			})
+			
+			
+			$('.box_2').find('.box_list').css({'max-height':$('.box_2').find('.box_list').height()+'px'})
+			
+			var pageIndex=1;
+			//提交评论
+			var kong=/.*[^ ].*/;
+			$('.box2_btn').click(function(){
+				//去除回车换行符验证是否为空
+				if(!kong.test($('.comment_text').val().replace(/[\r\n]/g,""))){
+					console.log(1)
+					$('.comment_text').val('')
+				}
+				$('.sub_1').click();
+			})
+			$('.form_1').submit(function(){
+				var obj=new Object();
+					obj.pageId='{$pageId}';
+					obj.text=$('.comment_text').val();
+					$.ajax({
+						type:"post",
+						url:"{:url('index/post/addPageComment')}",
+						data:obj,
+						async:true,
+						success:function(x){
+							$('.comment_text').val('');
+							console.log(x)
+							if(isNaN(x)){
+								alert('x')
+							}else{
+								getPageComment();
+							}
+						}
+					});
+				return false;
+			})
+			//点击加载更多
+			$('.box2_btn1').click(function(){
+				if($(this).html()!='加载更多'){
+					return;
+				}
+				$(this).html('获取中···');
+				pageIndex++;
+				var obj=new Object();
+					obj.pageIndex=pageIndex;
+					obj.pageSize=5
+					obj.Id='{$pageId}';
+				$.ajax({
+					type:"post",
+					url:"{:url('index/post/getPageComment')}",
+					async:true,
+					data:obj,
+					success:function(x){
+						console.log(x)
+						tp(x,1)
+					}
+				});
+				
+			})
+			
+			
+			//获取评论
+			function getPageComment(){
+				var obj=new Object();
+					obj.pageIndex=1;
+					obj.pageSize=pageIndex*5
+					obj.Id='{$pageId}';
+				$.ajax({
+					type:"post",
+					url:"{:url('index/post/getPageComment')}",
+					async:true,
+					data:obj,
+					success:function(x){
+						console.log(x)
+						tp(x,0)
+					}
+				});
+			}
+			function tp(x,y){
+				var x=JSON.parse(x);
+				if(x.pageIng.lower==''){
+					$('.box2_btn1').hide();
+				}else{
+					$('.box2_btn1').show();
+				}
+				if(y==0){
+					var html='<li class="list_title">网友最新评论</li>';
+				}else{
+					var html='';
+				}
+				for(var i=0;i<x.list.length;i++){
+					html+='<li>'+
+								'<i class="icon iconfont icon-ren-copy-copy"></i>'+
+								'<div>'+
+									'<div class="text">'+x.list[i].text+'</div>'+
+									'<div class="time">发布于：'+dateFtt('yyyy-MM-dd',x.list[i].time)+'</div>'+
+								'</div>'+
+							'</li>'
+				}
+				if(y==0){
+					$('.box_list').html(html);
+					$('.box_2').find('.box_list').css({'max-height':'none'});
+				}else{
+					$('.box_list').append(html);
+					$('.box_2').find('.box_list').css({'max-height':$('.box_2').find('.box_list').height()+600+'px'});
+					setTimeout(function(){
+						$('.box2_btn1').html('加载更多');
+					},1000)
+				}
+			}
+			
+			
+			
+			//时间格式化
+			function dateFtt(fmt,date) { //author: meizz   
+				var date=new Date(date);
+				var o = {   
+					"M+" : date.getMonth()+1,                 //月份   
+				    "d+" : date.getDate(),                    //日   
+				    "h+" : date.getHours(),                   //小时   
+				    "m+" : date.getMinutes(),                 //分   
+				    "s+" : date.getSeconds(),                 //秒   
+				    "q+" : Math.floor((date.getMonth()+3)/3), //季度   
+				    "S"  : date.getMilliseconds()             //毫秒   
+				};   
+				if(/(y+)/.test(fmt))   
+					fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
+				for(var k in o)  
+				    if(new RegExp("("+ k +")").test(fmt))   
+					fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+				return fmt;   
+			}
+			
+			
+			
+			
+		</script>	
+	
+				<script>
+					window._bd_share_config = {
+						"common": {
+							"bdSnsKey": {},
+							"bdText": "",
+							"bdMini": "2",
+							"bdMiniList": false,
+							"bdPic": "",
+							"bdStyle": "0",
+							"bdSize": "24"
+						},
+						"share": {}
+					};
+					with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+				</script>
+	</body>
+
+</html>

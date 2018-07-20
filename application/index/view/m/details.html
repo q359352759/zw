@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge,IE=11,IE=10,IE=9,IE=8"/>
+		<meta http-equiv="expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>{$basic.WebsiteTitle.val}</title>
+		<meta name="description" content="{$basic.description.val}" />
+		<meta name="keywords" content="{$basic.keywords.val}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/fontclass/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.css"/>
+		<!--顶部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/nav.css?a=3"/>
+		<!--底部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/footer.css?a=1"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/details.css?a=2"/>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				var r = $(window).width() / 750;
+				$(document).ready(function(){ 
+					$('head').children('meta[name="viewport"]').attr('content','width=device-width,initial-scale='+r+',maximum-scale='+r+', user-scalable=no')
+				})
+		</script>
+	</head>
+	<body>
+		<!--导航-->
+		{include file="m::nav" /}
+		
+		<div class="box_1">
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span class="icon iconfont icon-shang"></span><font>全部</font>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="{:url('index/m/ProductList')}">全部</a></li>
+					{foreach name="productTypeList" item="productTypeObj"}
+						<li><a href="{:url('index/m/ProductList?i='.$productTypeObj.Id)}">{$productTypeObj.name}</a></li>
+					{/foreach}
+				</ul>
+			</div>
+			<a class="Consultation" href="{:url('index/m/AboutUs')}#contactus">立即咨询</a>
+		</div>
+		
+		<div class="box_2">
+			<div class="title">{$pageDetails.title}</div>
+			<ul class="time">
+				<li>时间：{:date('Y-m-d',strtotime($pageDetails.CreationTime))}</li>
+				<li>浏览人数：{$pageDetails.Clicks}</li>
+			</ul>
+			<div class="line_1"></div>
+			<div class="cont">{$pageDetails.text}</div>
+			<!--<ul class="paging">
+				<a href="javascript:;"><li class="PREVIOUS disable">←&nbsp;PREVIOUS</li></a>
+				<a href="javascript:;"><li class="active">1</li></a>
+				<a href="javascript:;"><li>2</li></a>
+				<a href="javascript:;"><li>3</li></a>
+				<a href="javascript:;"><li>4</li></a>
+				<a href="javascript:;"><li>5</li></a>
+				<a href="javascript:;"><li class="NEXT">NEXT&nbsp;→</li></a>
+			</ul>-->
+		</div>
+		
+		
+		{include file="m::footer" /}
+		<script type="text/javascript">
+			$('.cont').find('*').each(function(){
+				var sty=$(this)[0].style['font-size'];
+				if(sty){
+					console.log(sty);
+					$(this).css({'font-size':parseInt(sty)*2+'px'})
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,130 @@
+
+/*底部*/
+.footer_1{
+	background: #0E1331;
+}
+.footer_1>.footer1_1{
+	width: 1200px;
+	margin: 0px auto;
+	padding: 48px 0px 30px;
+	border-bottom: 1px solid #1E202F;
+}
+.footer_1 .left_box{
+	width: 300px;
+	float: left;
+	position: relative;
+    padding-left: 80px;
+    color: #FFFFFF;
+}
+.footer_1 .left_box>img{
+	position: absolute;
+    left: 0;
+    top: 0px;
+    width: 50px;
+}
+.footer_1 .title_1{
+	font-size: 16px;
+	height: 30px;
+}
+.footer_1 .Telephone{
+	font-size:20px ;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif ;
+}
+.footer_1 .left_box ul{
+	margin: 20px 0px;
+}
+.footer_1 .left_box li{
+	color: #d7d8d9;
+	height: 30px;
+	line-height: 30px;
+}
+.footer_1 .right_box{
+	min-height: 158px;
+	margin-left: 300px;
+	border-left: 1px solid #1E202F;
+	padding: 0px 0px 0px 130px;
+	color: #d7d8d9;
+}
+.footer_1 .right_box li:not(.cb){
+	float: left;
+}
+.footer_1 .right_box li.w22{
+	width: 22%;
+}
+.footer_1 .right_box li.w12{
+	width: 12%;
+}
+.footer_1 .title_2{
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 14px;
+}
+.footer_1 .right_box li>a{
+	display: block;
+	font-size: 12px;
+	color: #9b9ea0;
+	height: 18px;
+	line-height: 18px;
+	margin-top: 8px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.footer_1 .right_box li>a:hover{
+	color: #4298FF;
+}
+.footer_1 .footer1_2{
+	width: 1200px;
+	margin: 0px auto;
+	padding: 30px 0px 10px;
+}
+.footer_1 .footer1_2 .title>a{
+	display: block;
+	float: left;
+	font-size: 16px;
+    color: #BEC8C7;
+    margin-right: 35px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.footer_1 .footer1_2 .title>a:hover{
+	color: #4298FF;
+}
+.footer_1 .footer1_2 .friendship{
+	margin: 42px 0px 0px 0px;
+}
+.footer_1 .footer1_2 .friendship>a{
+	display: block;
+	float: left;
+	font-size: 14px;
+    color: #9b9ea0;
+    margin-right: 10px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.footer_1 .footer1_2 .friendship>a:hover{
+	color: #4298FF;
+}
+
+
+.footer_2{
+	background: #090A0C;
+}
+.footer_2>div{
+	width: 1200px;
+	margin: 0px auto;
+	color: #9b9ea0;
+	padding: 15px 0px;
+	font-size: 14px;
+}
+.footer_2>div a{
+	color: #9b9ea0;
+}

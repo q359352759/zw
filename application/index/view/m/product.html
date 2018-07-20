@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge,IE=11,IE=10,IE=9,IE=8"/>
+		<meta http-equiv="expires" content="0" /> 
+		<meta http-equiv="Pragma" content="no-cache" />
+		<title>{$basic.WebsiteTitle.val}</title>
+		<meta name="description" content="{$basic.description.val}" />
+		<meta name="keywords" content="{$basic.keywords.val}" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/fontclass/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.css"/>
+		<!--顶部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/nav.css?a=3"/>
+		<!--底部-->
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/footer.css?a=1"/>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/MobilePhone/css/product.css?a=2"/>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				var r = $(window).width() / 750;
+				$(document).ready(function(){ 
+					$('head').children('meta[name="viewport"]').attr('content','width=device-width,initial-scale='+r+',maximum-scale='+r+', user-scalable=no')
+				})
+		</script>
+	</head>
+	<body>
+		<!--导航-->
+		{include file="m::nav" /}
+		
+		
+		<div class="banner">
+			<div id="myCarousel" class="carousel slide">
+			    <!-- 轮播（Carousel）项目 -->
+			    <div class="carousel-inner">
+			    	{foreach name="banner" item="bannerObj" key="i"}
+			        <div class="item {$i==0 ? 'active':''}">
+			            <img src="__UPLOAD__/{$bannerObj.imgUrl}" />
+			            <div class="banner_box">
+			            	<!--<div class="banner_Line"></div>-->
+			            	<div class="banner_title">{$bannerObj.title}</div>
+			            	<div class="banner_text">{$bannerObj.text}</div>
+			            	<a href="{:url('index/m/productlist')}" class="banner_btn">了解更多</a>
+			            </div>
+			        </div>
+			        {/foreach}
+			        <!--<div class="item">
+			            <img src="/wp-content/uploads/2014/07/slide2.png" alt="Second slide">
+			        </div>-->
+			    </div>
+			</div>
+		</div>
+		
+		<div id="classification"></div>
+			
+		<div class="box_2">
+			<div class="box2_header">产品分类展示</div>
+			<div class="line_1"></div>
+			<div class="">
+				<ul class="box_list">
+					{foreach name="productTypeList" item="productTypeObj" key="i"}
+					<li>
+						<a href="{:url('index/m/ProductList?i='.$productTypeObj.Id)}">
+							<div class="img"><img src="__UPLOAD__/{$productTypeObj.picture}"/></div>
+							<div class="title">{$productTypeObj.name}</div>
+							<div class="text">{$productTypeObj.introduce}</div>
+						</a>
+					</li>
+					{/foreach}
+					<!--<li>
+						<a href="javascript:;">
+							<div class="img"><img src="__PUBLIC__/image/product/app.png"/></div>
+							<div class="title">APP开发</div>
+							<div class="text">音乐、电商、企业应用、租车等各类app设计</div>
+						</a>
+					</li>-->
+					<li class="cb"></li>
+				</ul>
+			</div>
+			<div class="line_2"></div>
+		</div>
+		
+		<div id="characteristic" ></div>
+		
+		<div class="box_3"  >
+			<div class="title_1">特色产品展示</div>
+			<div class="line"></div>
+				<ul class="box_list">
+					{volist name="productList_3" id="productObj"}
+					<a href="{:url('index/m/details?i='.$productObj.Id)}">
+						<li>
+							<img src="__UPLOAD__/{$productObj.CoverMap}"/>
+							<div>
+								<i class="icon iconfont icon-unif054"></i>
+								<div class="title_2">{$productObj.title}</div>
+							</div>
+						</li>
+					</a>
+					{/volist}
+					<!--<a href="{:url('index/m/ProductList')}">
+						<li>
+							<img src="__PUBLIC__/image/OC51(]`W`UNOHQFX2RONMA8.png"/>
+							<div>
+								<i class="icon iconfont icon-unif054"></i>
+								<div class="title_2">电子班牌</div>
+							</div>
+						</li>
+					</a>-->
+				</ul>
+		</div>
+		
+
+		<div class="box_4">
+			<div class="title">服务遍布世界各地</div>
+			<div class="text">众联云海创立至今客户遍布全国各省市，一次合作，便长期合作，提供高效稳定的软件技术支撑服务</div>
+			<div class="Map">
+				<img src="__PUBLIC__/image/map.png"/>
+				<ul>
+					<li style="top: 75px;left:436px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>中国</span>
+					</li>
+					<li style="top: 18px;left:392px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>俄罗斯</span>
+					</li>
+					<li style="top: 140px;left: 322px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>印度</span>
+					</li>
+					<li style="top: 45px;left: 420px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>蒙古</span>
+					</li>
+					<li style="top: 60px;left: 353px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>哈萨克斯坦</span>
+					</li>
+					<li style="top: 210px;left: 510px;">
+						<div class="core"></div>
+						<div class="circular_1"></div>
+						<div class="circular_2"></div>
+						<span>澳大利亚</span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		
+
+		<div class="box_5">
+			<ul class="title">
+              	<li class="active"><a href="#box_5_1" data-toggle="tab">获得资料</a></li>
+              	<li class=""><a href="#box_5_2" data-toggle="tab">设计与开发</a></li>
+              	<li class=""><a href="#box_5_3" data-toggle="tab">后期维护</a></li>
+            </ul>
+            <div class="tab-content">
+				<div class="tab-pane active" id="box_5_1">
+					<img src="__PUBLIC__/image/组23.png"/>
+				</div>
+				<div class="tab-pane" id="box_5_2">
+					<img src="__PUBLIC__/image/组23拷贝.png"/>
+				</div>
+				<div class="tab-pane" id="box_5_3">
+					<img src="__PUBLIC__/image/组23拷贝1.png"/>
+				</div>
+            </div>
+		</div>
+		
+		
+		{include file="m::footer" /}
+		
+		
+		
+		
+		<script type="text/javascript">
+			
+			$('.box_1').find('a').click(function(){
+				if(isContains($(this).attr('href'),'#')){
+					var className_1=$(this).attr('href');
+					var top=$(className_1).offset().top
+					console.log(top);
+					$("html, body").animate({    
+			            scrollTop: top + "px"    
+			        }, 300);
+			      
+			        return false;
+				}
+			})
+			
+			function isContains(str, substr) {
+			    return str.indexOf(substr) >= 0;
+			}
+			
+			var liLen=$('.Map').find('li').length
+			var index=0;
+			var time=setInterval(function(){
+					if(index==liLen){
+						clearInterval(time)
+					}else{
+						$('.Map').find('li').eq(index).addClass('active');
+					}
+					index++
+				},300)
+			
+			
+		</script>
+	</body>
+</html>

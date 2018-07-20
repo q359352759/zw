@@ -1,0 +1,22 @@
+		<div class="header">
+			<a href="{:url('index/m/index')}" class="header_logo">
+				<img src="__PUBLIC__/image/logo.png"/>
+				<!--ZONLINKS-->
+				<span class="logo_font">众联云海</span>
+				<div class="cb"></div>
+			</a>
+			<i class="open_1 icon iconfont icon-sanhengxian"></i>
+			<ul class="header_nav">
+				<li class="Close_1"><i class="icon iconfont icon-guanbi"></i></li>
+				{volist name="topMenu" id='topMenuOjb'}
+					{if condition="$topMenuOjb.type==0"}
+						<a href="{:url('index/m/'.$topMenuOjb.url)}"><li class="{$navActive==$topMenuOjb.url ? 'active' : ''}">{$topMenuOjb.DisplayName!='' ? $topMenuOjb.DisplayName : $topMenuOjb.Formerly}</li></a>
+					{elseif condition="$topMenuOjb.type==1"/}
+						<a href="{:url('index/m/page?i='.$topMenuOjb.pageId)}"><li class="{$navActive=='page_'.$topMenuOjb.pageId ? 'active' : ''}">{$topMenuOjb.DisplayName!='' ? $topMenuOjb.DisplayName : $topMenuOjb.Formerly}</li></a>
+					{else /}
+						<a href="{$topMenuOjb.url}"><li class="">{$topMenuOjb.DisplayName!='' ? $topMenuOjb.DisplayName : $topMenuOjb.Formerly}</li></a>
+					{/if}
+				{/volist}
+				<!--<a href="{:url('index/m/product')}"><li class="{$navActive=='product' ? 'active' : ''}">解决方案<i class="icon iconfont icon-you"></i></li></a>-->
+			</ul>
+		</div>

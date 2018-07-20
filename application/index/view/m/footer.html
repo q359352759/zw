@@ -1,0 +1,134 @@
+		
+		<div class="footer_1">
+			<div class="footer1_1">
+				<div class="left_box">
+					<img src="__PUBLIC__/image/contact.png"/>
+					<div class="title_1">咨询热线</div>
+					<div class="Telephone">{$basic.Telephone.val}</div>
+					<ul>
+						<li>专业技术咨询</li>
+						<li>全方位产品解读</li>
+					</ul>
+					<div class="cb"></div>
+				</div>
+				<ul class="right_box">
+					{foreach name="bottomMenu" item="bottomMenuObj" key="i" }
+						{if condition="$i lt 3"}
+							<li class="w27">
+								<div class="title_2">{$bottomMenuObj.DisplayName!='' ? $bottomMenuObj.DisplayName : $bottomMenuObj.Formerly}</div>
+								{foreach name="bottomMenuObj.children" item="Obj"}
+									{if condition="$Obj.type==0"}
+										<a href="{:url('index/m/'.$Obj.url)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{elseif condition="$Obj.type==1"}
+										<a href="{:url('index/m/page?i='.$Obj.pageId)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{else /}
+										<a href="{$Obj.url}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{/if}
+								{/foreach}
+							</li>
+							{elseif condition="$i==3"}
+							<li class="w19">
+								<div class="title_2">{$bottomMenuObj.DisplayName!='' ? $bottomMenuObj.DisplayName : $bottomMenuObj.Formerly}</div>
+								{foreach name="bottomMenuObj.children" item="Obj"} 
+									{if condition="$Obj.type==0"}
+										<a href="{:url('index/m/'.$Obj.url)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{elseif condition="$Obj.type==1"}
+										<a href="{:url('index/m/page?i='.$Obj.pageId)}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{else /}
+										<a href="{$Obj.url}">{$Obj.DisplayName!='' ? $Obj.DisplayName : $Obj.Formerly}</a>
+									{/if}
+								{/foreach}
+							</li>
+						{/if}
+					{/foreach}
+					<!--<li class="w27">
+						<div class="title_2">解决方案</div>
+						<a href="javascript:;">教育行业</a>
+						<a href="javascript:;">医疗行业</a>
+						<a href="javascript:;">金融行业</a>
+						<a href="javascript:;">互联网行业</a>
+					</li>
+					<li class="w19">
+						<div class="title_2">关于我们</div>
+						<a href="javascript:;">公司简介</a>
+						<a href="javascript:;">资质证书</a>
+						<a href="javascript:;">人才招聘会</a>
+					</li>-->
+					<li class="cb"></li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="footer1_2">
+				<div class="title">
+					<a class="w27" href="javascript:;">关于我们</a>
+					<a class="w27" href="javascript:;">法律声明</a>
+					<a class="w27" href="javaScript:;">廉正举报</a>
+					<a class="w19" href="javascript:;">友情链接</a>
+					<div class="cb"></div>
+				</div>
+				<div class="friendship">
+					{foreach name="FriendshipLink" item="LinkObj"}
+					<a target="_blank" href="{$LinkObj.url}">{$LinkObj.name}</a>
+					{/foreach}
+					<div class="cb"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer_2">
+			<div>{$basic.ICP.val}
+				<!--<a href="javascript:;">站长统计</a>-->  
+				<!--<script src="https://s19.cnzz.com/z_stat.php?id=1263554088&web_id=1263554088" language="JavaScript"></script>-->
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+//			var r = $(window).width() / 750;
+//			$(document).ready(function(){
+//				$('head').children('meta[name="viewport"]').attr('content','width=device-width,initial-scale='+r+',maximum-scale='+r+', user-scalable=no')
+//			});
+			
+			var ww=$(window).width();
+			if(ww>750){
+				window.location.href='{:url("index/index/index")}'
+			}
+			
+			$(window).resize(function(){
+				var ww=$(window).width();
+//				var metaViewport=$('head').children('meta[name="viewport"]');
+				if(ww<750){
+//					alert('跳转至手机')
+					window.location.href='{:url("index/index/index")}'
+				}
+			})
+			
+			
+			$('.header').find('.open_1').click(function(){
+				$('.header').find('.header_nav').find('li').each(function(i){
+					 var startTime=(i-1)*0.2+'s'
+					$(this).css({'animation-delay':startTime,'-webkit-animation-delay':startTime})
+				})
+				$('.header').find('.header_nav').addClass('active');
+			})
+			$('.header').find('.Close_1').click(function(){
+				
+				$('.header').find('.header_nav').removeClass('active');
+				
+			})
+			
+			//访问记录
+			$.ajax({
+				type:"post",
+				url:"{:url('index/post/access')}",
+				async:true,
+				data:{'Browser':window.location.href},
+				success:function(x){
+					console.log(x)
+				}
+			});
+			
+		</script>
+		
